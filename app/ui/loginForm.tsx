@@ -1,11 +1,19 @@
 "use client";
 import Boton from "./Boton"
 import { ArrowRightEndOnRectangleIcon } from "@heroicons/react/24/outline"
+import { useActionState } from 'react';
+import { authenticate } from "@/app/lib/serverActions";
 
 export default function Login() {
+
+    const [errorMessage, formAction, isPending] = useActionState(
+        authenticate,
+        undefined,
+    );
+
     return (
         <div className="flex items-center justify-center min-h-screen">
-            <form action="{formAction}" className="space-y-3 bg-stone-100 p-6 rounded-xl">
+            <form action={formAction} className="space-y-3 bg-stone-100 p-6 rounded-xl">
                 <div className="flex justify-center items-center rounded-xl bg-onyx-400 px-6 pb-4 pt-4 mx-auto">
                     <h1>Log-In</h1>
                 </div>
@@ -34,8 +42,9 @@ export default function Login() {
                 </div>
 
                 <div>
-                    <Boton buttonText="Iniciar Sesión" buttonIcon={<ArrowRightEndOnRectangleIcon onClick={() => console.log('prueba')}/>} />
+                    <Boton buttonText="Iniciar Sesión" buttonIcon={<ArrowRightEndOnRectangleIcon aria-disabled={isPending}/>} />
                 </div>
+                {errorMessage && <div className="text-red-500">{errorMessage}</div>}
             </form>
         </div>
     )
