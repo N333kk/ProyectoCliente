@@ -1,3 +1,4 @@
+"use client";
 import Boton from "./Boton"
 import { ArrowRightEndOnRectangleIcon } from "@heroicons/react/24/outline"
 
@@ -33,7 +34,7 @@ export default function Login() {
                 </div>
 
                 <div>
-                    <Boton buttonText="Iniciar Sesión" buttonIcon={<ArrowRightEndOnRectangleIcon />} onClick={() => { console.log("Iniciar Sesión") }} />
+                    <Boton buttonText="Iniciar Sesión" buttonIcon={<ArrowRightEndOnRectangleIcon onClick={() => console.log('prueba')}/>} />
                 </div>
             </form>
         </div>
