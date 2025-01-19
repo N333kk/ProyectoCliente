@@ -2,13 +2,14 @@
 
 
 import { ReactNode } from "react";
-export default function Boton({ buttonText, buttonIcon}: {
+export default function Boton({ buttonText, buttonIcon }: {
   buttonText: string;
   buttonIcon: ReactNode;
+  
 
 }) {
   return (
-    <button
+    <button 
       className="group flex items-center justify-center rounded-full w-10 h-10 bg-onyx-400 text-white transition-all duration-300 hover:w-40"
     >
       <span className="w-5 h-5">{buttonIcon}</span>

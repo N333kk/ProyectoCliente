@@ -1,14 +1,14 @@
 "use client";
 import Boton from "./Boton"
-import { ArrowRightEndOnRectangleIcon, UserPlusIcon } from "@heroicons/react/24/outline"
+import {  UserPlusIcon, ArrowRightEndOnRectangleIcon } from "@heroicons/react/24/outline"
 import { useActionState } from 'react';
-import { authenticate } from "@/app/lib/serverActions";
+import { register } from "@/app/lib/serverActions";
 import Link from "next/link";
 
-export default function Login() {
+export default function SignUp() {
 
     const [errorMessage, formAction, isPending] = useActionState(
-        authenticate,
+        register,
         undefined,
     );
 
@@ -18,7 +18,7 @@ export default function Login() {
         <div className="flex items-center justify-center min-h-screen">
             <form action={formAction} className="space-y-3 bg-stone-100 p-6 rounded-xl">
                 <div className="flex justify-center items-center rounded-xl bg-onyx-400 px-6 pb-4 pt-4 mx-auto">
-                    <h1>Log-In</h1>
+                    <h1>Registro</h1>
                 </div>
                 <div className="w-full">
                     <div className="py-3 px-12">
@@ -44,16 +44,16 @@ export default function Login() {
 
                 </div>
                 <div className="flex justify-between">
-                    <div>
-                        <Boton buttonText="Iniciar Sesión" buttonIcon={<ArrowRightEndOnRectangleIcon aria-disabled={isPending}/>} />
-                    </div>
-                    <div>
-                        <Link href="/signup" className="group flex items-center justify-center rounded-full w-10 h-10 bg-onyx-400 text-white transition-all duration-300 hover:w-40">
-                        <span className="w-5 h-5"><UserPlusIcon  /></span>
+                <div>
+                        <Link href="/login" className="group flex items-center justify-center rounded-full w-10 h-10 bg-onyx-400 text-white transition-all duration-300 hover:w-40">
+                        <span className="w-5 h-5"><ArrowRightEndOnRectangleIcon  /></span>
                         <span className="ml-0 overflow-hidden whitespace-nowrap transition-all duration-300 max-w-0 group-hover:max-w-xs group-hover:ml-4">
-        Registro
+        Iniciar Sesion
       </span>
                         </Link>
+                    </div>
+                    <div>
+                        <Boton buttonText="Registro" buttonIcon={<UserPlusIcon aria-disabled={isPending}/>} />
                     </div>
                 </div>
                 {errorMessage && <div className="text-red-500">{errorMessage}</div>}

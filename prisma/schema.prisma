@@ -12,14 +12,14 @@ model gastos {
   userId Int
   nombre String   @db.VarChar(255)
   monto  Float
-  fecha  DateTime @db.Date
+  fecha  DateTime @db.Date @default(now())
   users  users    @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
 model groups {
   id                           Int     @id @default(autoincrement())
   name                         String  @db.VarChar(255)
-  adminId                      Int
+  adminId                      Int     @unique
   users_groups_adminIdTousers  users   @relation("groups_adminIdTousers", fields: [adminId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_adminid_users_id")
   users_users_group_idTogroups users[] @relation("users_group_idTogroups")
 }
@@ -32,11 +32,11 @@ model user_types {
 
 model users {
   id                            Int        @id @default(autoincrement())
-  userTypeId                    Int
+  userTypeId                    Int        @default (1)
   group_id                      Int?
-  username                      String     @db.VarChar(255)
+  username                      String     @unique @db.VarChar(255)
   password                      String     @db.VarChar(255)
-  balance                       Float?
+  balance                       Float?     @default(0)
   gastos                        gastos[]
   groups_groups_adminIdTousers  groups[]   @relation("groups_adminIdTousers")
   groups_users_group_idTogroups groups?    @relation("users_group_idTogroups", fields: [group_id], references: [id], onDelete: NoAction, onUpdate: NoAction)

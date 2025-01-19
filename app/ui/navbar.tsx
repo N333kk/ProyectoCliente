@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { signOut } from "@/auth";
 
 
 export default function Navbar() {
@@ -15,6 +16,16 @@ export default function Navbar() {
                     </li>
                     <li>
                         <Link href="/about" className="rounded-full  bg-onyx-400 border border-white-100 px-5 py-2 hover:bg-onyx-600">About</Link>
+                    </li>
+                    <li>
+                    <form action={async () => {
+            'use server';
+            await signOut();
+          }}>
+          <button className="rounded-full  bg-onyx-400 border border-white-100 px-5 py-2 hover:bg-onyx-600">
+            <div className="hidden md:block">Sign Out</div>
+          </button>
+        </form>
                     </li>
                 </ul>
             </nav>
