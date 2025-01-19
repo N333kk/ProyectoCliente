@@ -1,0 +1,44 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model gastos {
+  id     Int      @id @default(autoincrement())
+  userId Int
+  nombre String   @db.VarChar(255)
+  monto  Float
+  fecha  DateTime @db.Date
+  users  users    @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model groups {
+  id                           Int     @id @default(autoincrement())
+  name                         String  @db.VarChar(255)
+  adminId                      Int
+  users_groups_adminIdTousers  users   @relation("groups_adminIdTousers", fields: [adminId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_adminid_users_id")
+  users_users_group_idTogroups users[] @relation("users_group_idTogroups")
+}
+
+model user_types {
+  id    Int     @id @default(autoincrement())
+  type  String  @db.VarChar(255)
+  users users[]
+}
+
+model users {
+  id                            Int        @id @default(autoincrement())
+  userTypeId                    Int
+  group_id                      Int?
+  username                      String     @db.VarChar(255)
+  password                      String     @db.VarChar(255)
+  balance                       Float?
+  gastos                        gastos[]
+  groups_groups_adminIdTousers  groups[]   @relation("groups_adminIdTousers")
+  groups_users_group_idTogroups groups?    @relation("users_group_idTogroups", fields: [group_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  user_types                    user_types @relation(fields: [userTypeId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
