@@ -32,7 +32,7 @@ export default function Login() {
                         />
                     </div>
                     <div className="py-3 px-12">
-                        <label htmlFor="password" className="text-onyx-300">Password</label>
+                        <label htmlFor="password" className="text-onyx-300 py-2">Password</label>
                         <input
                             type="password"
                             id="password"

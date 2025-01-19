@@ -22,7 +22,9 @@ export default function SignUp() {
                 </div>
                 <div className="w-full">
                     <div className="py-3 px-12">
+                        <div className="flex justify-between">
                         <label htmlFor="username" className="text-onyx-300 py-2">Username</label>
+                        </div>
                         <input
                             type="text"
                             id="username"
@@ -32,7 +34,10 @@ export default function SignUp() {
                         />
                     </div>
                     <div className="py-3 px-12">
-                        <label htmlFor="password" className="text-onyx-300">Password</label>
+                        <div className="flex justify-between">
+                        <label htmlFor="password" className="text-onyx-300 py-2">Password</label>
+                        <label htmlFor="password" className="text-onyx-700 py-3 text-xs">(min. 8 caracteres)</label>
+                        </div>
                         <input
                             type="password"
                             id="password"
