@@ -17,28 +17,33 @@ async function getUser(username: string): Promise<Usuario | null> {
 }
 
 export const { auth, signIn, signOut } = NextAuth({
-
     ...authConfig,
     providers: [Credentials({
         async authorize(credentials) {
             const parsedCredentials = z.object({username: z.string(), password: z.string().min(8)})
                 .safeParse(credentials);
 
-                if (parsedCredentials.success) {
-                    const { username, password } = parsedCredentials.data;
-                    const user = await getUser(username);
-                    if (!user) return null;
-                    const passwordMatch = await bcrypt.compare(password, user.password);
-
-                    if (passwordMatch) {
-                        return user;
+            if (parsedCredentials.success) {
+                const { username, password } = parsedCredentials.data;
+                const user = await getUser(username);
+                if (!user) return null;
+                const passwordMatch = await bcrypt.compare(password, user.password);
+                
+                if (passwordMatch) {
+                    console.log('User authenticated:', user);
+                    const userToken = {
+                        id: user.id,
+                        email: null,
+                        name: user.username,
                     }
+                    return userToken;
                 }
+            }
 
-                console.log('Credenciales invalidas');
-                return null;
-            },
-        }),
-    ],
-
+            console.log('Credenciales invalidas');
+            return null;
+        },
+    })],
 });
+
+export { auth as middleware } from "./auth";

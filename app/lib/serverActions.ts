@@ -1,6 +1,6 @@
 'use server';
 
-import { signIn } from '@/auth';
+import { signIn, auth } from '@/auth';
 import { AuthError } from 'next-auth';
 import { prisma } from './prisma';
 import bcrypt from 'bcrypt';
@@ -46,3 +46,20 @@ export async function register(
             }
         }
     }
+
+export async function getBalance() {
+    const session = await auth();
+
+    const user = session?.user;
+
+    const userToCheck = await prisma.users.findFirst({
+        select: {
+            balance: true,
+        }, where: {
+            username: user?.name ?? '',
+        }
+    })
+
+    return userToCheck?.balance ?? 0;
+
+}
