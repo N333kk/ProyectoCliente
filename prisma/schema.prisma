@@ -13,7 +13,18 @@ model gastos {
   nombre String   @db.VarChar(255)
   monto  Float
   fecha  DateTime @db.Date @default(now())
+  consolidado Boolean @default(false)
   users  users    @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model ingersos {
+
+  id Int @id @default(autoincrement())
+  userId Int
+  monto Float
+  fecha DateTime @db.Date @default(now())
+  consolidado Boolean @default(false)
+  users users @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
 model groups {
@@ -41,4 +52,5 @@ model users {
   groups_groups_adminIdTousers  groups[]   @relation("groups_adminIdTousers")
   groups_users_group_idTogroups groups?    @relation("users_group_idTogroups", fields: [group_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   user_types                    user_types @relation(fields: [userTypeId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  ingresos                     ingersos[]
 }

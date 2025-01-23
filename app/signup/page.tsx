@@ -10,7 +10,11 @@ export default function SignupPage() {
       <Navbar />
       <main className="grid grid-cols-9 grid-rows-6 gap-6 min-h-screen">
         <WelcomePanel />
-        <MainPanel />
+        <MainPanel>
+          <div className="text-center text-white text-3xl font-bold">
+            <h1>Sign Up</h1>
+            </div>
+        </MainPanel>
         <UtilityPanel />
       </main>
       <div className="absolute inset-0 p-8 gap-16 sm:p-20 backdrop-blur-sm z-10 flex items-center justify-center">
