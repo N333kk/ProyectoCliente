@@ -68,7 +68,7 @@ export async function addBalance(formData: FormData) {
     const fechaActual = new Date().toISOString().slice(0, 10);
     const fechaIngreso = (formData.get('fecha') as string)
     let consolidado: boolean;
-    if(fechaIngreso == fechaActual){
+    if(fechaIngreso <= fechaActual){
         consolidado = true;
     } else {
         consolidado = false;
@@ -116,7 +116,7 @@ export async function addGasto(formData: FormData) {
     const fechaActual = new Date().toISOString().slice(0, 10);
     const fechaIngreso = (formData.get('fecha') as string)
     let consolidado: boolean;
-    if(fechaIngreso == fechaActual){
+    if(fechaIngreso <= fechaActual){
         consolidado = true;
     } else {
         consolidado = false;
@@ -183,4 +183,85 @@ export async function getGastos() {
     })
 
     return gastos;
+}
+
+export async function deleteGastos(gastoId: number) {
+
+    const gastoToDelete = await prisma.gastos.findUnique({
+        where: {
+            id: gastoId
+        }
+    });
+
+    console.log(gastoToDelete);
+
+    
+       const deleted = await prisma.gastos.delete({
+            where:{
+                id: gastoId
+            }
+        })
+        return console.log(deleted + ' success')
+}
+export async function showFormUpadteGasto(gastoId:number){
+    const session = await auth();
+
+    const user = session?.user;
+
+    const gastoToShow = await prisma.gastos.findUnique({
+        where: {
+            id: gastoId
+        }
+    });
+
+    if(gastoToShow?.userId == user?.id){
+        return gastoToShow;
+    }
+
+}
+export async function updateGasto(formData: FormData, id:number) {
+
+
+    await prisma.gastos.update({
+        where: {
+            id: id
+        }, 
+        data: {
+            monto: Number(formData.get('cantidad') as string),
+            nombre: formData.get('concepto') as string,
+            fecha: new Date(formData.get('fecha') as string),
+        }
+    })
+}
+
+export async function deleteIngreso(id:number){
+    const ingresoToDelete = await prisma.ingersos.findUnique({
+        where: {
+            id: id
+        }
+    });
+
+    console.log(ingresoToDelete);
+
+    
+       const deleted = await prisma.ingersos.delete({
+            where:{
+                id: id
+            }
+        })
+        return console.log(deleted + ' success')
+}
+
+export async function updateIngreso(formData: FormData, id:number) {
+
+
+    await prisma.ingersos.update({
+        where: {
+            id: id
+        }, 
+        data: {
+            monto: Number(formData.get('cantidad') as string),
+            fecha: new Date(formData.get('fecha') as string),
+        }
+    })
 }

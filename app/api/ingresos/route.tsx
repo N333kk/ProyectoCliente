@@ -1,4 +1,4 @@
-import { prisma } from '../lib/prisma';
+import { prisma } from '../../lib/prisma';
 import { auth } from '@/auth';
 
 export async function GET() {
@@ -17,12 +17,12 @@ export async function GET() {
 
     
 
-    const gastos = await prisma.gastos.findMany({
+    const ingresos = await prisma.ingersos.findMany({
         where: {
             userId: userToCheck?.id,
         }
     })
 
-    return Response.json(gastos);
+    return Response.json(ingresos);
 
 }
