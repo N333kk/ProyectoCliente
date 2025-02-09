@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "../globals.css";
+import "@/app/globals.css";
+import MainPanel from "@/app/ui/mainPanel";
+import WelcomePanel from "@/app/ui/welcomePanel";
+import UtilityPanel from "@/app/ui/utilityPanel";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +30,15 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <div className="font-[family-name:var(--font-geist-sans)] min-h-screen flex flex-col relative">
+              <main className="grid grid-cols-9 grid-rows-6 gap-6 min-h-screen">
+                <WelcomePanel />
+                <MainPanel>
+                  {children}
+                </MainPanel>
+                <UtilityPanel />
+              </main>
+            </div>
       </body>
     </html>
   );

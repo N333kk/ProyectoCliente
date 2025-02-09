@@ -7,8 +7,8 @@ export default function UtilityPanel() {
       <div>
         <div className="px-4 my-4">
           <Link
-            href={"/home"}
-            className="bg-onyx-300 hover:bg-onyx-500 py-2 px-4 rounded-full border w-full flex flex-row justify-start items-center font-bold text-lg"
+            href={"/dashboard/"}
+            className="bg-onyx-300 hover:bg-onyx-500 py-2 px-4 rounded-full border w-full flex flex-row justify-start items-center font-bold text-lg transition-all group"
           >
             <div className="px-4">
               <svg
@@ -20,20 +20,20 @@ export default function UtilityPanel() {
                 <path d="M8.543 2.232a.75.75 0 0 0-1.085 0l-5.25 5.5A.75.75 0 0 0 2.75 9H4v4a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1a1 1 0 1 1 2 0v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1V9h1.25a.75.75 0 0 0 .543-1.268l-5.25-5.5Z" />
               </svg>
             </div>
-            <p>Inicio</p>
+         <p className="transition-all group-hover:translate-x-6">Inicio</p>
           </Link>
         </div>
         <div className="px-4 my-4">
           <Link
-            href={"/home/gastos"}
-            className="bg-onyx-300 hover:bg-onyx-500 py-2 px-4 rounded-full border w-full flex flex-row justify-start items-center font-bold text-lg"
+            href={"/dashboard/gastos"}
+            className="bg-onyx-300 hover:bg-onyx-500 py-2 px-4 rounded-full border w-full flex flex-row justify-start items-center font-bold text-lg transition-all group"
           >
-            <div className="px-4">
+            <div className="px-4 transition-all">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 16 16"
                 fill="currentColor"
-                className="size-4"
+                className="size-4 transition-all"
               >
                 <path
                   fillRule="evenodd"
@@ -42,13 +42,13 @@ export default function UtilityPanel() {
                 />
               </svg>
             </div>
-            <p>Gastos</p>
+            <p className="transition-all group-hover:translate-x-6">Gastos</p>
           </Link>
         </div>
         <div className="px-4 my-4">
           <Link
-            href={"/home/ingresos"}
-            className="bg-onyx-300 hover:bg-onyx-500 py-2 px-4 rounded-full border w-full flex flex-row justify-start items-center font-bold text-lg"
+            href={"/dashboard/ingresos"}
+            className="bg-onyx-300 hover:bg-onyx-500 py-2 px-4 rounded-full border w-full flex flex-row justify-start items-center font-bold text-lg transition-all group"
           >
             <div className="px-4">
               <svg
@@ -65,7 +65,7 @@ export default function UtilityPanel() {
                 <path d="M13 11.75a.75.75 0 0 0-1.5 0v.179c0 .15-.138.28-.306.255A65.277 65.277 0 0 0 1.75 11.5a.75.75 0 0 0 0 1.5c3.135 0 6.215.228 9.227.668A1.764 1.764 0 0 0 13 11.928v-.178Z" />
               </svg>
             </div>
-            <p>Ingresos</p>
+            <p className="transition-all group-hover:translate-x-6">Ingresos</p>
           </Link>
         </div>
       </div>
@@ -76,7 +76,7 @@ export default function UtilityPanel() {
             await signOut();
           }}
         >
-          <button className="bg-onyx-300 hover:bg-onyx-500 py-2 px-4 rounded-full border w-full flex  justify-start items-center font-bold text-lg">
+          <button className="bg-onyx-300 hover:bg-onyx-500 py-2 px-4 rounded-full border w-full flex  justify-start items-center font-bold text-lg transition-all group">
             <div className="px-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -92,7 +92,7 @@ export default function UtilityPanel() {
               </svg>
             </div>
 
-            <div className="hidden md:block">Sign Out</div>
+            <div className="transition-all group-hover:translate-x-6">Sign Out</div>
           </button>
         </form>
       </div>

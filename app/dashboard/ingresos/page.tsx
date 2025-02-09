@@ -1,20 +1,16 @@
-import MainPanel from "@/app/ui/mainPanel";
-import WelcomePanel from "@/app/ui/welcomePanel";
-import UtilityPanel from "@/app/ui/utilityPanel";
 import { addBalance } from "@/app/lib/serverActions";
 import Ingreso from "@/app/ui/Ingreso";
 
 export default async function DashIngresos() {
+
+  
   return (
-    <div className="font-[family-name:var(--font-geist-sans)] min-h-screen flex flex-col relative">
-      <main className="grid grid-cols-9 grid-rows-6 gap-6 min-h-screen">
-        <WelcomePanel />
-        <MainPanel>
-          <div className="flex flex-row justify-center items-center p-">
+    
+          <div className="flex flex-row justify-center items-center">
             <div className="flex justify-center items-center h-32 p-8 ">
               <Ingreso />
             </div>
-            <div className="p-8 bg-rich_black-500 border border-rich_black-100 rounded-lg">
+            <div className="p-8 bg-paynes_gray-100 border border-rich_black-100 rounded-lg">
               <form action={addBalance} className="flex flex-col items-center">
                 <div className="py-2">
                   <input
@@ -53,10 +49,5 @@ export default async function DashIngresos() {
               </form>
             </div>
           </div>
-        </MainPanel>
-        <UtilityPanel />
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center"></footer>
-    </div>
   );
 }
