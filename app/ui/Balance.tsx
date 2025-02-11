@@ -15,7 +15,7 @@ async function fetcher(...args: Parameters<typeof fetch>) {
     
     return( 
         <div>
-            <p className="font-bold text-lg py-8">Tu balance es de: {data ? data.balance : "Cargando..."} €</p>
+            <p className="font-bold text-lg py-8">Tu balance es de: {data ? data.balance+ " €" : ". . ."} </p>
         </div>
     );
 

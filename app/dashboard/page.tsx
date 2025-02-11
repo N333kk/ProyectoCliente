@@ -1,26 +1,34 @@
-'use client'
+"use client";
 
 import { BarChart } from "@/app/ui/Chart";
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from "react";
 export default function Page() {
-  const [posts, setPosts] = useState(null)
- 
+  const [chartData, setChartData] = useState(null);
+
   useEffect(() => {
-    async function fetchPosts() {
-      const res = await fetch('/api/chart')
-      const data = await res.json()
-      setPosts(data)
+    async function fetchChartData() {
+      const res = await fetch("/api/chart");
+      const data = await res.json();
+      setChartData(data);
     }
-    fetchPosts()
-  }, [])
- 
-  if (!posts) return <div>Loading...</div>
- 
+    fetchChartData();
+  }, []);
+
+  if (!chartData) {
+    return (
+      <div className="w-9/12 h-96 m-32 p-8 bg-paynes_gray-100 rounded-3xl flex flex-col justify-center items-center">
+       
+        <span className="py-4 font-bold">Cargando...</span>
+      </div>
+    );
+  }
+
   return (
-    <div className="w-full m-32 p-8 bg-paynes_gray-100 rounded-3xl transition-all">
+    <div className="w-9/12 h-96 m-32 p-8 bg-paynes_gray-100 rounded-3xl transition-all">
       <h2>Gastos e Ingresos a lo largo del año</h2>
+
       <BarChart
-        data={posts}
+        data={chartData}
         index="mes"
         xAxisLabel={"Meses"}
         showGridLines={true}
@@ -29,9 +37,7 @@ export default function Page() {
           `€${Intl.NumberFormat("eu").format(number).toString()}`
         }
         colors={["red", "lime"]}
-        
       />
     </div>
   );
-};
-
+}
