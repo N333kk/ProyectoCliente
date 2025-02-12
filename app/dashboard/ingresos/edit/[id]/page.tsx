@@ -28,6 +28,7 @@ export default async function DashIngresos({
               id="cantidad"
               name="cantidad"
               placeholder="Cantidad"
+              required
               className="border border-rich_black-100 rounded-lg py-1 px-2 bg-stone-200 text-black"
             />
           </div>
@@ -36,6 +37,7 @@ export default async function DashIngresos({
               type="date"
               id="fecha"
               name="fecha"
+              required
               className="border border-rich_black-100 rounded-lg py-1 px-4 bg-stone-200 text-black"
             />
           </div>

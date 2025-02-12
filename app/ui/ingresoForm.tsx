@@ -12,6 +12,7 @@ export default async function IngresoForm() {
                     step="0.01"
                     id="cantidad"
                     name="cantidad"
+                    required
                     placeholder="Cantidad"
                     className="border border-rich_black-100 rounded-lg py-1 px-2 bg-stone-200 text-black"
                   />
@@ -21,6 +22,7 @@ export default async function IngresoForm() {
                     type="date"
                     id="fecha"
                     name="fecha"
+                    required
                     className="border border-rich_black-100 rounded-lg py-1 px-4 bg-stone-200 text-black"
                   />
                 </div>

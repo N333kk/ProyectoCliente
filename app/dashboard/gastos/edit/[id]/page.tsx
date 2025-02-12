@@ -28,6 +28,7 @@ export default async function DashGastos({
                             <input type="text" 
                             id="concepto"
                             name="concepto"
+                            required
                             placeholder="Concepto" 
                             className="border border-rich_black-100 rounded-lg py-1 px-2 bg-stone-200 text-black"/>
                         </div>
@@ -36,12 +37,14 @@ export default async function DashGastos({
                             id="cantidad"
                             name="cantidad"
                             placeholder="Cantidad" 
+                            required
                             className="border border-rich_black-100 rounded-lg py-1 px-2 bg-stone-200 text-black"/>
                         </div>
                         <div className="py-2">
                             <input type="date" 
                             id="fecha"
                             name="fecha"
+                            required
                             className="border border-rich_black-100 rounded-lg py-1 px-4 bg-stone-200 text-black"/>
                         </div>
                         <button className="bg-paynes_gray-400 text-white rounded-md p-2">Editar</button>

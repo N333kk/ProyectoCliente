@@ -23,7 +23,7 @@ export const ThemeSwitcher = () => {
       className={`w-fit absolute right-5 top-2 p-2 rounded-md hover:scale-110 active:scale-100 duration-200 bg-onyx-400 dark:bg-onyx-600`}
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
     >
-      {theme === "light" ? "Dark" : "Light"}
+      {theme === "light" ? "Oscuro" : "Claro"}
     </button>
   );
 };
