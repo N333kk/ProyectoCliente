@@ -105,19 +105,19 @@ export default function Gasto() {
           </div>
         ))}
       </div>
-      <div className="flex justify-between mt-4">
+      <div className="flex justify-between items-center mt-4">
         <button
-          className="px-4 py-2 bg-gray-300 rounded-md"
+          className="px-4 py-2 bg-gradient-to-r from-onyx-200 to-onyx-500 rounded-md"
           onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
           disabled={currentPage === 1}
         >
           Anterior
         </button>
-        <span>
+        <span className="px-2">
           Página {currentPage} de {totalPages}
         </span>
         <button
-          className="px-4 py-2 bg-gray-300 rounded-md"
+          className="px-4 py-2 bg-gradient-to-r from-onyx-500 to-onyx-200 rounded-md"
           onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
           disabled={currentPage === totalPages}
         >
