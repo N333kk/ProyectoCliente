@@ -15,8 +15,6 @@ export async function GET() {
         }
     })
 
-    
-
     const gastos = await prisma.gastos.findMany({
         where: {
             userId: userToCheck?.id,

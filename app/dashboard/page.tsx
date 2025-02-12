@@ -25,7 +25,7 @@ export default function Page() {
 
   return (
     <div className="w-9/12 h-96 m-32 p-8 bg-paynes_gray-100 rounded-3xl transition-all">
-      <h2>Gastos e Ingresos a lo largo del año</h2>
+      <h2>Gastos e Ingresos a lo largo del año actual</h2>
 
       <BarChart
         data={chartData}

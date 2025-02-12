@@ -24,6 +24,10 @@ export async function GET() {
         },
         where: {
             userId: userToCheck?.id,
+            fecha: {
+                gte: new Date('2025-01-01'),
+                lt: new Date('2026-01-01')
+            }
         }
     })
 
@@ -34,6 +38,10 @@ export async function GET() {
         },
         where: {
             userId: userToCheck?.id,
+            fecha: {
+                gte: new Date('2025-01-01'),
+                lt: new Date('2026-01-01')
+            }
         }
     })
 

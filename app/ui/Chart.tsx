@@ -455,7 +455,7 @@ const ChartTooltip = ({
           // border color
           "border-gray-200 dark:border-gray-800",
           // background color
-          "bg-white dark:bg-gray-950",
+          "bg-onyx-600 dark:bg-gray-950",
         )}
       >
         <div className={cx("border-b border-inherit px-4 py-2")}>
@@ -464,7 +464,7 @@ const ChartTooltip = ({
               // base
               "font-medium",
               // text color
-              "text-gray-900 dark:text-gray-50",
+              "text-gray-200 dark:text-gray-50",
             )}
           >
             {label}
@@ -489,7 +489,7 @@ const ChartTooltip = ({
                     // base
                     "whitespace-nowrap text-right",
                     // text color
-                    "text-gray-700 dark:text-gray-300",
+                    "text-gray-400 dark:text-gray-300",
                   )}
                 >
                   {category}
@@ -500,7 +500,7 @@ const ChartTooltip = ({
                   // base
                   "whitespace-nowrap text-right font-medium tabular-nums",
                   // text color
-                  "text-gray-900 dark:text-gray-50",
+                  "text-gray-400 dark:text-gray-50",
                 )}
               >
                 {valueFormatter(value)}
@@ -723,7 +723,7 @@ const BarChart = React.forwardRef<HTMLDivElement, BarChartProps>(
                 <Label
                   position="insideBottom"
                   offset={-20}
-                  className="fill-gray-800 text-sm font-medium dark:fill-gray-200"
+                  className="fill-gray-400 text-sm font-medium dark:fill-gray-200"
                 >
                   {xAxisLabel}
                 </Label>
@@ -771,7 +771,7 @@ const BarChart = React.forwardRef<HTMLDivElement, BarChartProps>(
                   style={{ textAnchor: "middle" }}
                   angle={-90}
                   offset={-15}
-                  className="fill-gray-800 text-sm font-medium dark:fill-gray-200"
+                  className="fill-gray-500 text-sm font-medium dark:fill-gray-200"
                 >
                   {yAxisLabel}
                 </Label>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { signOut } from "@/auth";
+import { ThemeSwitcher } from "./ThemeSwitcher";
 
 export default function UtilityPanel() {
   return (
@@ -69,6 +70,7 @@ export default function UtilityPanel() {
           </Link>
         </div>
       </div>
+      <ThemeSwitcher></ThemeSwitcher>
       <div className="px-4 ">
         <form
           action={async () => {
@@ -76,6 +78,7 @@ export default function UtilityPanel() {
             await signOut();
           }}
         >
+          
           <button className="bg-onyx-300 hover:bg-onyx-500 py-2 px-4 rounded-full border w-full flex  justify-start items-center font-bold text-lg transition-all group">
             <div className="px-4">
               <svg
@@ -91,6 +94,8 @@ export default function UtilityPanel() {
                 />
               </svg>
             </div>
+
+           
 
             <div className="transition-all group-hover:translate-x-6">Sign Out</div>
           </button>

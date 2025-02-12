@@ -11,7 +11,7 @@ async function fetcher(...args: Parameters<typeof fetch>) {
       {
         balance:number
       }
-    >("/api/balance", fetcher, { refreshInterval: 1000 });
+    >("/api/balance", fetcher, { refreshInterval: 500 });
     
     return( 
         <div>

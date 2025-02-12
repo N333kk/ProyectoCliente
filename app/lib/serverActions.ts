@@ -139,6 +139,40 @@ export async function addGasto(formData: FormData) {
         throw new Error('Usuario no encontrado');
     }
 
+    const gastosToUpdate = await prisma.gastos.findMany({
+        where: {
+            userId: userToCheck?.id,
+          fecha: {
+            lt: new Date(),
+          },
+          consolidado: false, 
+        },
+      });
+if(gastosToUpdate.length>0){
+      await prisma.gastos.updateMany({
+        where: {
+          id: {
+            in: gastosToUpdate.map(gasto => gasto.id),
+          },
+        },
+        data: {
+          consolidado: true,
+        },
+      });
+      for (const gasto of gastosToUpdate) {
+        await prisma.users.update({
+          where: {
+            id: gasto.userId,
+          },
+          data: {
+            balance: {
+              decrement: gasto.monto, 
+            },
+          },
+        });
+      }
+    }
+
     await prisma.gastos.create({
         data: {
             monto: Number(formData.get('cantidad') as string),
@@ -173,8 +207,6 @@ export async function getGastos() {
             username: user?.name ?? '',
         }
     })
-
-    
 
     const gastos = await prisma.gastos.findMany({
         where: {

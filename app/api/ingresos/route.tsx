@@ -15,6 +15,42 @@ export async function GET() {
         }
     })
 
+    const ingresosToUpdate = await prisma.ingersos.findMany({
+        where: {
+            userId: userToCheck?.id,
+          fecha: {
+            lt: new Date(),
+          },
+          consolidado: false, 
+        },
+      });
+      if(ingresosToUpdate.length > 0){
+        console.log("test");
+      await prisma.ingersos.updateMany({
+        where: {
+          id: {
+            in: ingresosToUpdate.map(ingreso => ingreso.id),
+          },
+        },
+        data: {
+          consolidado: true,
+        },
+      });
+    
+      for (const ingreso of ingresosToUpdate) {
+        await prisma.users.update({
+          where: {
+            id: ingreso.userId,
+          },
+          data: {
+            balance: {
+              increment: ingreso.monto, 
+            },
+          },
+        });
+      }
+    }
+
     
 
     const ingresos = await prisma.ingersos.findMany({
